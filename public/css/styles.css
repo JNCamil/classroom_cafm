@@ -1,5 +1,5 @@
 *{
-    font-style: Montserrat, sans-serif; 
+    font-style: Montserrat, sans-serif ; 
 }
 
 #logincol{
@@ -10,4 +10,18 @@
 #img_login{
     width: 380px;
     height: 80px;  
+}
+#img_nav{
+    height: 50px; 
+}
+.nav-item:hover .nav-link {
+    background-color: white;
+    color: #dc3545 !important;
+    border-radius: 10px; 
+}
+
+#contenedor {
+    margin-top: 80px;
+    margin-bottom:200px;
+    
 }
