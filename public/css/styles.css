@@ -1,0 +1,13 @@
+*{
+    font-style: Montserrat, sans-serif; 
+}
+
+#logincol{
+    background-image: linear-gradient(rgba(210, 5, 5, 0.8), rgba(210, 5, 5, 0.8)), url("../img/balonlogo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#img_login{
+    width: 380px;
+    height: 80px;  
+}
