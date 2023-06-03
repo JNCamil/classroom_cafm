@@ -23,7 +23,7 @@
     </div>
     <div class="col-lg-6 d-flex align-items-center px-5"><!--justify-content-center-->
         <div class="d-flex flex-column m-5">
-            <h3 class="m-5">
+            <h3 class="m-5 text-center">
                 <i class="fa-solid fa-users fa-lg"></i> Datos de Acceso
             </h3>
             <div class="card w-100 border-0">
@@ -49,7 +49,7 @@
                                 <?php echo $_SESSION["errores"]["login"] ?>
                             </div>
                         <?php endif; ?>
-                        <p class="text-center mt-3">¿No tienes una cuenta? <a href="registro.php">Regístrate aquí</a>
+                        <p class="text-center mt-3">¿No tienes una cuenta? <a href="registration.php">Regístrate aquí</a>
                         </p>
                     </form>
                 </div>
