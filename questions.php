@@ -7,12 +7,12 @@
 
     <div class="row  vh-100 ">
 
-        <div class="col-lg-8   p-5 ">
+        <div class="col-lg-8  p-5">
 
 
             <h3>En el Terreno de Juego. Nuestro Blog <span class="badge bg-danger">¡Útlimas preguntas!</span></h3>
 
-            <?php $entradas = verEntradas($bd, true);
+            <?php $entradas = verEntradas($bd);
             if (!empty($entradas)):
                 foreach ($entradas as $entrada): ?>
 
@@ -37,11 +37,7 @@
             endif;
             ?>
 
-            <div class="container text-center my-3">
-                <button type="button" class="btn btn-danger"><a class="text-decoration-none link-light"
-                        href="questions.php"> Ver
-                        Todas</a></button>
-            </div>
+           
 
         </div>
 

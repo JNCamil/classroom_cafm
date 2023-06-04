@@ -12,7 +12,7 @@ if (!isset($entrada_actual["id"])) {
 
     <div class="row  vh-100 ">
 
-        <div class="col-lg-8  h-100 p-5">
+        <div class="col-lg-8  p-5">
 
 
             <h3 class="mb-3">
@@ -23,7 +23,7 @@ if (!isset($entrada_actual["id"])) {
                     <h4 class="card-title">
                         <?= $entrada_actual["titulo"] ?>
                     </h4>
-                    <a href="categoria.php?id=<?= $entrada_actual["categoria_id"] ?>"
+                    <a href="category.php?id=<?= $entrada_actual["categoria_id"] ?>"
                         class="text-decoration-none link-light">
                         <h6 class="card-subtitle mb-2 text-body-secondary">
                             <?= $entrada_actual["categoria"] ?>
@@ -40,11 +40,11 @@ if (!isset($entrada_actual["id"])) {
                 </div>
                 <?php if (isset($_SESSION['usuario']) && $_SESSION['usuario']['id'] == $entrada_actual['usuario_id']): ?>
                     <button type="button" class="btn btn-warning w-25 m-1 "><a
-                            href="editar_entrada.php?id=<?= $entrada_actual['id'] ?>"
+                            href="edit_question.php?id=<?= $entrada_actual['id'] ?>"
                             class="text-decoration-none link-light"><i class="fa-solid fa-highlighter"></i> Editar Pregunta</a></button>
 
                     <button type="button" class="btn btn-danger w-25 m-1 "><a
-                            href="borrar_entrada.php?id=<?= $entrada_actual['id'] ?>"
+                            href="./src/delete_question.php?id=<?= $entrada_actual['id'] ?>"
                             class="text-decoration-none link-light"><i class="fa-solid fa-trash"></i> Borrar Pregunta</a></button>
                 <?php endif; ?>
 

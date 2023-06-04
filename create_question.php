@@ -7,7 +7,7 @@
 
     <div class="row  vh-100 ">
 
-        <div class="col-lg-8  h-100 p-5">
+        <div class="col-lg-8   p-5">
 
 
             <h3 class="mb-3">Crear Pregunta <span class="bg-danger rounded-circle p-2">
@@ -37,7 +37,9 @@
                 </select>
                 <br>
                 <?php echo isset($_SESSION["errores_entrada"]) ? mostrarError($_SESSION["errores_entrada"], "categoria") : ""; ?>
-                <button type="submit" class="btn btn-danger w-100 text-center my-5" name="guardar">Guardar</button>
+                <div class="text-center">
+                <button type="submit" class="btn btn-danger  my-3" name="guardar">Guardar</button>
+                </div>
             </form>
             <?php borrarErrores(); ?>
                 </div>

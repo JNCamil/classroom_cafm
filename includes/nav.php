@@ -13,7 +13,7 @@
                     foreach ($categorias as $categoria): ?>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" id="nav_item" href="categoria.php?id=<?php echo $categoria["id"] ?>">
+                            <a class="nav-link text-white" id="nav_item" href="category.php?id=<?php echo $categoria["id"] ?>">
                                 <?php echo $categoria["nombre"] ?>
                             </a>
                         </li>
@@ -23,8 +23,8 @@
                 ?>
 
             </ul>
-            <form action="buscar.php" class="d-flex" role="search" method="post">
-                <input name="busqueda" class="form-control me-2 " type="search" placeholder="Buscar"
+            <form action="./search.php" class="d-flex" role="search" method="post">
+                <input name="busqueda" class="form-control me-2 " type="search" placeholder="Buscar preguntas"
                     aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Buscar</button>
             </form>

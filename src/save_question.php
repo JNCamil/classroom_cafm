@@ -49,7 +49,7 @@ if(isset($_POST)){
         $_SESSION["errores_entrada"]=$errores;
         //Si estamos editando y hay un error en EDITAR ENTRADA
         if(isset($_GET['editar'])){
-           header("Location:editar_entrada.php?id=".$_GET['editar']);
+           header("Location:../edit_question.php?id=".$_GET['editar']);
         }else{
             //SI ESTAMOS EN CREAR PREGUNTA
             header("Location:../create_question.php");

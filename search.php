@@ -1,3 +1,8 @@
+<?php
+if (!isset($_POST["busqueda"]) || empty($_POST["busqueda"])) {
+    header("Location:index.php");
+}
+?>
 <?php require_once("./includes/redirect.php") ?>
 <?php require_once("./includes/head.php") ?>
 <?php require_once("./includes/nav.php") ?>
@@ -9,10 +14,13 @@
 
         <div class="col-lg-8   p-5 ">
 
+            <h3>Resultados de busqueda
+                <span class="badge bg-success"><i class="fa-solid fa-magnifying-glass"></i>
+                    <?= $_POST['busqueda'] ?>
+                </span>
+            </h3>
 
-            <h3>En el Terreno de Juego. Nuestro Blog <span class="badge bg-danger">¡Útlimas preguntas!</span></h3>
-
-            <?php $entradas = verEntradas($bd, true);
+            <?php $entradas = verEntradas($bd, null, null, $_POST['busqueda']);
             if (!empty($entradas)):
                 foreach ($entradas as $entrada): ?>
 
@@ -34,18 +42,15 @@
                         </div>
                     </div>
                 <?php endforeach;
-            endif;
-            ?>
+            else:
+                ?>
 
-            <div class="container text-center my-3">
-                <button type="button" class="btn btn-danger"><a class="text-decoration-none link-light"
-                        href="questions.php"> Ver
-                        Todas</a></button>
-            </div>
+                <div class='alert alert-danger alerta' role='alert'>No hay resultados</div>
+            <?php endif; ?>
 
         </div>
 
-  
 
-<?php require_once("./includes/user.php") ?>
-<?php require_once("./includes/footer.php") ?>
+
+        <?php require_once("./includes/user.php") ?>
+        <?php require_once("./includes/footer.php") ?>
