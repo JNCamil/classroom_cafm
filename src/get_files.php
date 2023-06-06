@@ -4,15 +4,19 @@ $folderPath = '../public/docs/reglas'; // Ruta de la carpeta donde se encuentran
 $folders=scandir($folderPath);
 // Ordenar los nombres de archivos de forma natural
 natcasesort($folders);
-echo '<div class="btn-group  d-grid gap-2 d-sm-flex flex-sm-wrap" aria-label="Default button group">';
+//echo '<div class="btn-group  d-grid gap-2 d-sm-flex flex-sm-wrap" aria-label="Default button group">'; VERSIÓN ANTERIOR
+echo '<div class="scrollable-body" style="max-height: 550px; overflow-y: auto;">';
+echo '<div class="btn-group-vertical" aria-label="Vertical button group" >';
 foreach ($folders as $folder) {
     if(!is_dir($folder)){
     $folderName = basename($folder);
     $file = pathinfo($folderName, PATHINFO_FILENAME);
-    //echo $file."<br>";
-    echo '<button type="button" class="mb-3  btn btn-outline-danger flex-grow-1 flex-sm-grow-0" onclick="showPdfTest(\'' . $folderName . '\')" /><i class="fa-solid fa-folder"></i> '. $file.'</button>';
+    
+    //echo '<button type="button" class="mb-3  btn btn-outline-danger flex-grow-1 flex-sm-grow-0" onclick="showPdfTest(\'' . $folderName . '\')" /><i class="fa-solid fa-folder"></i> '. $file.'</button>'; VERSIÓN ANTERIOR
+    echo '<button type="button" class="mb-3 btn btn-outline-danger btn-lg" onclick="showPdfTest(\'' . $folderName . '\')" /><i class="fa-solid fa-folder"></i> '. $file.'</button>';
 }
 }
+echo '</div>';
 echo '</div>';
 /*
 Para mostrar el nombre de un archivo PDF sin mostrar su extensión en PHP, puedes utilizar la función pathinfo() con el argumento PATHINFO_FILENAME. 

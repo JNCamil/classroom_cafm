@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row  vh-100">
 
-        <div class="col-lg-6 h-100 p-5" id="logincol">
+        <div class="col-lg-6  p-5" id="logincol">
             <div class="row ">
                 <div class="col-12 mb-5">
                     <img src="./public/img/logo_ident_login.png" class="img-fluid" id="img_login" alt="Cargando logo">
