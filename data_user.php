@@ -29,7 +29,7 @@
                 <?php endif; ?>
 
                 <div class="card-body ">
-                    <form action="actualizar_usuario.php" method="post">
+                    <form action="./src/update_datauser.php" method="post">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" name="nombre"
                             value="<?= $_SESSION["usuario"]["nombre"]; ?>"><br>

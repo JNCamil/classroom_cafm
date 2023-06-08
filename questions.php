@@ -5,7 +5,7 @@
 <div class="container-fluid" id="contenedor">
 
 
-    <div class="row  vh-100 ">
+    <div class="row   ">
 
         <div class="col-lg-8  p-5">
 

@@ -9,10 +9,10 @@
             </h5>
 
             <p class="card-text">Esperemos que disfrute de su estadía.</p>
-            <button type="button" class="btn btn-danger m-2 w-75"><i class="fa-solid fa-person-circle-question fa-xl"></i><a href="./create_question.php" class="text-decoration-none link-light"> Crear
+            <button type="button" class="btn btn-success m-2 w-75"><i class="fa-solid fa-person-circle-question fa-xl"></i><a href="./create_question.php" class="text-decoration-none link-light"> Crear
                     Pregunta</button><br>
            
-            <button type="button" class="btn btn-success m-2 w-75"><i class="fa-solid fa-person-circle-exclamation fa-xl"></i><a href="./data_user.php" class="text-decoration-none link-light"> Mis
+            <button type="button" class="btn btn-secondary m-2 w-75"><i class="fa-solid fa-person-circle-exclamation fa-xl"></i><a href="./data_user.php" class="text-decoration-none link-light"> Mis
                     datos</button><br><br>
 
             <a href="./src/session_close.php" >Cerrar sesión</a>

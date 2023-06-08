@@ -10,7 +10,7 @@ foreach ($folders as $folder) {
     $folderName = basename($folder);
     $file = pathinfo($folderName, PATHINFO_FILENAME);
     //echo $file."<br>";
-    echo '<button type="button" class="m-3  btn btn-outline-danger btn-lg" onclick="showPdfTestA(\'' . $folderName . '\')" /><i class="fa-solid fa-folder"></i> '. $file.'</button>';
+    echo '<button type="button" class=" p-3 btn btn-outline-danger btn-lg" onclick="showPdfTestA(\'' . $folderName . '\')" /><i class="fa-solid fa-folder"></i> '. $file.'</button>';
 }
 }
 echo '</div>';

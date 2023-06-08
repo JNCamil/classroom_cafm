@@ -13,7 +13,7 @@ foreach ($folders as $folder) {
     $file = pathinfo($folderName, PATHINFO_FILENAME);
     
     //echo '<button type="button" class="mb-3  btn btn-outline-danger flex-grow-1 flex-sm-grow-0" onclick="showPdfTest(\'' . $folderName . '\')" /><i class="fa-solid fa-folder"></i> '. $file.'</button>'; VERSIÓN ANTERIOR
-    echo '<button type="button" class="mb-3 btn btn-outline-danger btn-lg" onclick="showPdfTest(\'' . $folderName . '\')" /><i class="fa-solid fa-folder"></i> '. $file.'</button>';
+    echo '<button type="button" class="text-start mb-3 px-5  btn btn-outline-danger btn-lg" onclick="showPdfTest(\'' . $folderName . '\')" /><i class="fa-solid fa-folder"></i> '. $file.'</button>';
 }
 }
 echo '</div>';
