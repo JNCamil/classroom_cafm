@@ -7,6 +7,12 @@
                 <div class="col-12 mb-5">
                     <img src="./public/img/logo_ident_login.png" class="img-fluid" id="img_login" alt="Cargando logo">
                 </div>
+                <div class="col-12 my-5">
+                    <!-- Espaciador -->
+                </div>
+                <div class="col-12 my-4">
+                    <!-- Espaciador -->
+                </div>
                 <div class="col-12 text-white my-5">
                     <h3>CLASROOM CAFM</h3>
                     <h4>¡¡Importante!!</h4>
@@ -14,7 +20,12 @@
                         la
                         REAL FEDERACIÓN DE FÚTBOL DE MADRID.</p>
                 </div>
-                <div class="col-12 text-white ">
+                <div class="col-12 my-5">
+                    <!-- Espaciador -->
+                </div>
+                
+                
+                <div class="col-12  text-white ">
                     <p>&copy; Classroom CAFM</p>
 
                 </div>
@@ -22,7 +33,8 @@
 
             </div>
         </div>
-        <div class="col-lg-6 d-flex align-items-center px-5"><!--justify-content-center-->
+        <div class="col-lg-6 d-flex align-items-center px-5 justify-content-center"><!--justify-content-center-->
+            
             <div class="d-flex flex-column m-5">
                 <h3 class="m-5 text-center">
                     <i class="fa-solid fa-users fa-lg"></i> Datos de Acceso
