@@ -1,5 +1,5 @@
 window.onload = function () {
-    // showFiles();
+    //showFiles();
     // showFilesN();
     // showFilesA();
     var currentUrl = window.location.href;
@@ -10,6 +10,8 @@ window.onload = function () {
         showFilesN();
     } else if (currentUrl.includes('test3.php')) {
         showFilesA();
+    } else if (currentUrl.includes('test6.php')) {
+        showFilesT();
     }
 };
 function showPdfTest(fileName) {
@@ -92,7 +94,11 @@ function cargarPregunta() {
     let datos = preguntas[contador];
     correcta = datos['success'];
     elegida = '';
-    document.getElementById("pregunta").innerHTML = datos["pregunta"];
+    if (datos['type'] == 'FJ' || datos['type'] == 'TLD-TLI' || datos['type'] == 'TP') {
+        document.getElementById("pregunta").innerHTML = datos["pregunta"] + ' <a href="#" onclick="abrirVideo(\'' + datos['cod'] + '\');" >Ver Vídeo</a>';
+    } else {
+        document.getElementById("pregunta").innerHTML = datos["pregunta"];
+    }
     reordenarOpciones();
     document.getElementById("respuestas").innerHTML = '';
     let list = document.createElement("ul");
@@ -229,99 +235,15 @@ function showPDFA(archivo) {
 /************************************************* -- Vídeos-- *************************************************** */
 function showTestVid(fileName) {
 
-    var pdfContent = '<button id="HacerTest" class="btn btn-danger btn-lg mb-3 " type="button" onclick="empezarVid(\'' + fileName + '\')"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Hacer Test</button> </div></div>';
+    var pdfContent = '<button id="HacerTest" class="btn btn-danger btn-lg mb-3 " type="button" onclick="empezar(\'' + fileName + '\')"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Hacer Test</button> </div></div>';
 
     var contenedor = document.getElementById("contenedor2");
     contenedor.innerHTML = pdfContent;
 }
 
-function empezarVid(regla) {
-    document.getElementById("puntos").innerHTML = "";
-    document.getElementById("ultima").innerHTML = "";
-    document.getElementById("fin").innerHTML = "";
-    preguntas = [];
-    contador = 0;
-    correctas = 0;
-    elegida = '';
-    let sections = document.getElementsByTagName("section");
-    for (let i = 0; i < sections.length; i++) {
-        sections[i].innerHTML = '';
-    }
-    document.getElementById("HacerTest").style.display = "none";
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            preguntas = JSON.parse(this.responseText);
-
-            cargarPreguntaVid();
-        }
-    };
-    xhttp.open("POST", "./src/reglasTest.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("regla=" + encodeURIComponent(regla));
-}
-function cargarPreguntaVid() {
-    let datos = preguntas[contador];
-    console.log(datos);
-    correcta = datos['success'];
-    elegida = '';
-    document.getElementById("pregunta").innerHTML = datos["pregunta"] + ' <a href="#" onclick="abrirVideo(\'' + datos['cod'] + '\', \'' + datos['type'] + '\');" >Ver Vídeo</a>';
-    reordenarOpciones();
-    document.getElementById("respuestas").innerHTML = '';
-    let list = document.createElement("ul");
-    list.setAttribute("class", "list-group");
-    for (let i = 0; i < opciones.length; i++) {
-
-        let op = document.createElement("li");
-        op.setAttribute("class", "list-group-item list-group-item-danger")
-        let radio = document.createElement("input");
-        radio.setAttribute("type", "radio");
-        radio.setAttribute("class", "form-check-input me-1");
-        radio.setAttribute("name", "respuesta");
-        radio.setAttribute("onclick", "elegir('" + datos[opciones[i]] + "')");
-        op.appendChild(radio);
-        op.appendChild(document.createTextNode(datos[opciones[i]]));
-        list.appendChild(op);
-        document.getElementById("respuestas").appendChild(list);
-    }
-    let botonResponder = document.createElement("button");
-
-    botonResponder.setAttribute("onclick", "responderVid()");
-    botonResponder.setAttribute("class", "btn btn-danger my-3 ");
-    botonResponder.setAttribute("id", "respondertest");
-    botonResponder.innerHTML = "Responder";
-    document.getElementById("respuestas").appendChild(botonResponder);
-}
-function responderVid() {
-    document.getElementById("ultima").setAttribute("class", "badge text-bg-warning");
-
-    let ultima = 'Respuesta Incorrecta';
-    if (elegida == correcta) {
-        document.getElementById("ultima").setAttribute("class", "badge text-bg-success");
-        ultima = 'Respuesta Correcta';
-        correctas++;
-    }
-    contador++;
-
-    document.getElementById("ultima").innerHTML = ultima;
-
-    document.getElementById("puntos").setAttribute("class", "text-primary my-3  text-center");
-
-    // document.getElementById("puntos").innerHTML = "<i class='fa-solid fa-circle-info fa-lg'></i> Puntuación: " + correctas + " de " + contador + ".";
-    document.getElementById("puntos").innerHTML = "<i class='fa-solid fa-circle-info fa-lg'></i> Puntuación: " + correctas + " de 5.";
-    if (contador < 5) {
-        cargarPreguntaVid();
-    }
-    else {
-
-        finalizar();
-
-    }
-}
-
-function abrirVideo(cod, type) {
-    var videoURL = './public/videos/' + type + '/' + cod + '.mp4'; // Ruta del video en tu servidor local
+function abrirVideo(cod) {
+    var videoURL = './public/videos/' + cod + '.mp4'; // Ruta del video en tu servidor local
     var ventana = window.open('', '_blank', 'width=600,height=400'); // Abre la mini ventana
 
     ventana.document.write(`
@@ -333,3 +255,50 @@ function abrirVideo(cod, type) {
 
 }
 /*********************** --CREAR TEST-- ***********************/
+function showFilesT() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("lista").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("POST", "./src/get_filesT.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
+}
+
+function empezarCrear() {
+    document.getElementById("puntos").innerHTML = "";
+    document.getElementById("ultima").innerHTML = "";
+    document.getElementById("fin").innerHTML = "";
+    let formulario = document.getElementById("miForm");
+    let checkboxes = formulario.querySelectorAll("input[type='checkbox']:checked");
+    let formData = new FormData(formulario);
+    // Agregar los checkboxes seleccionados al FormData
+    for (var i = 0; i < checkboxes.length; i++) {
+        formData.append("opciones[]", checkboxes[i].value);
+    }
+
+
+    preguntas = [];
+    contador = 0;
+    correctas = 0;
+    elegida = '';
+    let sections = document.getElementsByTagName("section");
+    for (let i = 0; i < sections.length; i++) {
+        sections[i].innerHTML = '';
+    }
+    //document.getElementById("HacerTest").style.display = "none";
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            preguntas = JSON.parse(this.responseText);
+
+            cargarPregunta();
+        }
+    };
+    xhttp.open("POST", "./src/crear_test.php", true);
+    //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(formData);
+}

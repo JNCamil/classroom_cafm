@@ -1,4 +1,4 @@
-<div class="col-lg-4 my-5 p-5 "><!--justify-content-center--   Antigua: mod 04/06/23 -- my-5  p-5-->
+<div class="col-lg-4  p-5 "><!--justify-content-center--   Antigua: mod 04/06/23 -- my-5  p-5-->
 
 
 <?php if (isset($_SESSION["usuario"])): ?>
