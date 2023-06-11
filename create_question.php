@@ -10,7 +10,7 @@
         <div class="col-lg-8   p-5">
 
 
-            <h3 class="mb-3">Crear Pregunta <span class="bg-danger rounded-circle p-2">
+            <h3 class="mb-3">Crear Post o Una Pregunta <span class="bg-danger rounded-circle p-2">
                     <i class="fa-solid fa-circle-question fa-xl text-light"></i>
                 </span></h3>
 

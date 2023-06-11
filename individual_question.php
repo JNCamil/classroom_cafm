@@ -18,7 +18,7 @@ if (!isset($entrada_actual["id"])) {
             <h3 class="mb-3">
                 <?= $entrada_actual['titulo'] ?> <span class="badge bg-success"><i class="fa-solid fa-file-circle-question fa-lg"></i></span>
             </h3>
-            <div class="card cartas">
+            <div class="card bg-transparent border-0">
                 <div class="card-body">
                     <h4 class="card-title">
                         <?= $entrada_actual["titulo"] ?>
@@ -49,7 +49,7 @@ if (!isset($entrada_actual["id"])) {
                 <?php endif; ?>
 
             </div>
-            <div id="disqus_thread" class="card p-2 my-3"></div>
+            <div id="disqus_thread" class="card p-2 my-3 bg-transparent border-0"></div>
 <script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.

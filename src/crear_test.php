@@ -14,7 +14,7 @@
       $consulta .= " type=? OR ";
       $valores[]=$opcion;
     }
-    $consulta = rtrim($consulta, " OR ") . "ORDER BY RAND() LIMIT 5;";
+    $consulta = rtrim($consulta, " OR ") . "ORDER BY RAND() LIMIT 8;";
 
 
 $preparada = $bd->prepare($consulta);

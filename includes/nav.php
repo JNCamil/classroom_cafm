@@ -24,7 +24,7 @@
 
             </ul>
             <form action="./search.php" class="d-flex" role="search" method="post">
-                <input name="busqueda" class="form-control me-2 " type="search" placeholder="Buscar preguntas"
+                <input name="busqueda" class="form-control me-2 " type="search" placeholder="Buscar post"
                     aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Buscar</button>
             </form>

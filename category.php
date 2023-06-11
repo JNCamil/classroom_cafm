@@ -19,8 +19,8 @@
             }
             ?>
 
-            <h3>
-                <?= $categoria_actual['nombre'] ?> <span class="badge bg-danger">
+            <h3 class="mb-5">
+                <?= strtoupper($categoria_actual['nombre']) ?> <span class="badge bg-danger">
                     ¡Últimas preguntas!
                 </span></h3>
                 <?php if ($_GET['id'] != 5): ?>
@@ -30,7 +30,7 @@
                 if (!empty($entradas)):
                     foreach ($entradas as $entrada): ?>
 
-                        <div class="card">
+                        <div class="card mb-1 border-0 bg-transparent">
                             <div class="card-body">
                                 <h4 class="card-title">
                                     <a href="individual_question.php?id=<?= $entrada["id"] ?>"

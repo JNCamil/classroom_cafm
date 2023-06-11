@@ -16,7 +16,7 @@ window.onload = function () {
 };
 function showPdfTest(fileName) {
 
-    var pdfContent = '<div class="card border-0"><div class="card-body "><button class="btn btn-danger btn-lg mb-3 " type="button" onclick="showPDF(\'' + fileName + '\')"><i class="fa-solid fa-file-pdf fa-lg"></i> ' + fileName + ' </button><br>' +
+    var pdfContent = '<div class="card border-0 bg-transparent"><div class="card-body "><button class="btn btn-danger btn-lg mb-3 " type="button" onclick="showPDF(\'' + fileName + '\')"><i class="fa-solid fa-file-pdf fa-lg"></i> ' + fileName + ' </button><br>' +
         '<button id="HacerTest" class="btn btn-danger btn-lg mb-3 " type="button" onclick="empezar(\'' + fileName + '\')"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Hacer Test</button> </div></div>';
 
     var contenedor = document.getElementById("contenedor2");
@@ -95,8 +95,10 @@ function cargarPregunta() {
     correcta = datos['success'];
     elegida = '';
     if (datos['type'] == 'FJ' || datos['type'] == 'TLD-TLI' || datos['type'] == 'TP') {
+        document.getElementById("pregunta").setAttribute("class", "text-white   p-3 rounded bg-danger");
         document.getElementById("pregunta").innerHTML = datos["pregunta"] + ' <a href="#" onclick="abrirVideo(\'' + datos['cod'] + '\');" >Ver Vídeo</a>';
     } else {
+        document.getElementById("pregunta").setAttribute("class", "text-white   p-3 rounded bg-danger");
         document.getElementById("pregunta").innerHTML = datos["pregunta"];
     }
     reordenarOpciones();
@@ -106,7 +108,7 @@ function cargarPregunta() {
     for (let i = 0; i < opciones.length; i++) {
 
         let op = document.createElement("li");
-        op.setAttribute("class", "list-group-item list-group-item-danger")
+        op.setAttribute("class", "list-group-item list-group-item-light")
         let radio = document.createElement("input");
         radio.setAttribute("type", "radio");
         radio.setAttribute("class", "form-check-input me-1");
@@ -146,8 +148,8 @@ function responder() {
     document.getElementById("puntos").setAttribute("class", "text-primary my-3  text-center");
 
     // document.getElementById("puntos").innerHTML = "<i class='fa-solid fa-circle-info fa-lg'></i> Puntuación: " + correctas + " de " + contador + ".";
-    document.getElementById("puntos").innerHTML = "<i class='fa-solid fa-circle-info fa-lg'></i> Puntuación: " + correctas + " de 5.";
-    if (contador < 5) {
+    document.getElementById("puntos").innerHTML = "<i class='fa-solid fa-circle-info fa-lg'></i> Puntuación: " + correctas + " de 8.";
+    if (contador < 8) {
         cargarPregunta();
     }
     else {
@@ -163,7 +165,7 @@ function finalizar() {
 
     document.getElementById("respondertest").style.display = "none";
 
-    if (correctas == 5) {
+    if (correctas == 8) {
         let p1 = document.createElement("p");
         p1.setAttribute("class", "alert-success text-center");
         p1.innerHTML = "Puntuación perfecta, enhorabuena. <i class='fa-solid fa-trophy fa-xl'></i>";
@@ -190,7 +192,7 @@ function showFilesN() {
 }
 function showPdfTestN(fileName) {
 
-    var pdfContent = '<div class="card border-0"><div class="card-body "><button class="btn btn-danger btn-lg mb-3 " type="button" onclick="showPDFN(\'' + fileName + '\')"><i class="fa-solid fa-file-pdf fa-lg"></i> ' + fileName + ' </button><br>' +
+    var pdfContent = '<div class="card border-0 bg-transparent"><div class="card-body "><button class="btn btn-danger btn-lg mb-3 " type="button" onclick="showPDFN(\'' + fileName + '\')"><i class="fa-solid fa-file-pdf fa-lg"></i> ' + fileName + ' </button><br>' +
         '<button id="HacerTest" class="btn btn-danger btn-lg mb-3 " type="button" onclick="empezar(\'' + fileName + '\')"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Hacer Test</button> </div></div>';
 
 
@@ -220,7 +222,7 @@ function showFilesA() {
 }
 function showPdfTestA(fileName) {
 
-    var pdfContent = '<div class="card border-0"><div class="card-body "><button class="btn btn-danger btn-lg mb-3 " type="button" onclick="showPDFA(\'' + fileName + '\')"><i class="fa-solid fa-file-pdf fa-lg"></i> ' + fileName + ' </button><br>' +
+    var pdfContent = '<div class="card border-0 bg-transparent"><div class="card-body "><button class="btn btn-danger btn-lg mb-3 " type="button" onclick="showPDFA(\'' + fileName + '\')"><i class="fa-solid fa-file-pdf fa-lg"></i> ' + fileName + ' </button><br>' +
         '<button id="HacerTest" class="btn btn-danger btn-lg mb-3 " type="button" onclick="empezar(\'' + fileName + '\')"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Hacer Test</button> </div></div>';
 
     var contenedor = document.getElementById("contenedor2");

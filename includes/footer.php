@@ -3,7 +3,7 @@
 
 </div><!--FIN CONTAINER PADRE-->
 
-<footer class="py-1.5 mt-5 fixed-bottom bg-light" >
+<footer class="py-1.5  fixed-bottom bg-light" id="footer">
   <div class="container-fluid">
     <p>© Classroom CAFM</p>
   </div>

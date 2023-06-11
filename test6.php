@@ -3,14 +3,14 @@
 <?php require_once("./includes/head.php") ?>
 <?php require_once("./includes/nav.php") ?>
 
-<div class="container-fluid px-4 " id="contenedor">
+<div class="container-fluid px-4 vh-100" id="contenedor">
 
         <!-- Anterior, para bajar la fila hasta abajo: <div class="row vh-100 ">-->
         <div class="row ">
 
             <div class="col-lg-3  p-4 mt-4 text-center  ">
 
-                <div class="card ">
+                <div class="card bg-transparent">
                     <div class="card-body">
                         <div id="lista"></div>
                     </div>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <h6 class="bg-white text-danger p-3 rounded " id="pregunta"></h6>
+                <h6  id="pregunta"></h6>
                 <div id="respuestas"></div>
                 <div id="ultima"></div>
                 <div class="d-flex justify-content-center" id="puntos"></div>

@@ -5,18 +5,18 @@
 <div class="container-fluid" id="contenedor">
 
 
-    <div class="row   ">
+    <div class="row  vh-100 ">
 
-        <div class="col-lg-8  p-5">
+        <div class="col-lg-8  p-5 mb-5">
 
 
-            <h3>En el Terreno de Juego. Nuestro Blog <span class="badge bg-danger">¡Útlimas preguntas!</span></h3>
+            <h3 class="mb-5">EN EL TERRENO DE JUEGO. NUESTRO BLOG <span class="badge bg-danger">¡Útlimas preguntas!</span></h3>
 
             <?php $entradas = verEntradas($bd);
             if (!empty($entradas)):
                 foreach ($entradas as $entrada): ?>
 
-                    <div class="card">
+                    <div class="card mb-1 border-0 bg-transparent">
                         <div class="card-body">
                             <h4 class="card-title">
                                 <a href="individual_question.php?id=<?= $entrada["id"] ?>"

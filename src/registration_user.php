@@ -41,12 +41,12 @@ if (isset($_POST['registro'])) {
         $errores['email'] = "El email no es válido";
     }
     //CONTRASEÑA
-    if (!empty($password)) {
+    if (!empty($password) && preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/', $password)) {
         $password_valido = true;
 
     } else {
         $password_valido = false;
-        $errores['password'] = "El password no es válido";
+        $errores['password'] = "La contraseña no es válida, debe contener al menos una mayúscula,una minúscula y un número";
     }
     if (isset($_POST["terminos"])) {
         $terminos_valido = true;
