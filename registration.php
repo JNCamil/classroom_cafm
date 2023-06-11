@@ -44,12 +44,12 @@
 
 
                             <?php if (isset($_SESSION["completado"])): ?>
-                                <div class='alert alert-success alerta' role='alert'>
+                                <div class='alert alert-success' role='alert'>
                                     <?php echo $_SESSION['completado'] . " <a href=login.php>Inicie sesión</a>" ?>
                                 </div>
 
                             <?php elseif (isset($_SESSION["errores"]['general'])): ?>
-                                <div class='alert alert-success alerta' role='alert'>
+                                <div class='alert alert-danger' role='alert'>
                                     <?php echo ($_SESSION['errores']['general']) ?>
                                 </div>
                             <?php endif; ?>

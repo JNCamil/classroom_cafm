@@ -41,11 +41,11 @@ if (!isset($entrada_actual["id"])) {
                 <?php if (isset($_SESSION['usuario']) && $_SESSION['usuario']['id'] == $entrada_actual['usuario_id']): ?>
                     <button type="button" class="btn btn-warning w-25 m-1 "><a
                             href="edit_question.php?id=<?= $entrada_actual['id'] ?>"
-                            class="text-decoration-none link-light"><i class="fa-solid fa-highlighter"></i> Editar Pregunta</a></button>
+                            class="text-decoration-none link-light"><i class="fa-solid fa-highlighter"></i> Editar Post</a></button>
 
                     <button type="button" class="btn btn-danger w-25 m-1 "><a
                             href="./src/delete_question.php?id=<?= $entrada_actual['id'] ?>"
-                            class="text-decoration-none link-light"><i class="fa-solid fa-trash"></i> Borrar Pregunta</a></button>
+                            class="text-decoration-none link-light"><i class="fa-solid fa-trash"></i> Borrar Post</a></button>
                 <?php endif; ?>
 
             </div>

@@ -41,7 +41,7 @@
             <div class="container text-center my-5">
                 <button type="button" class="btn btn-danger"><a class="text-decoration-none link-light"
                         href="questions.php"> Ver
-                        Todas</a></button>
+                        Todos</a></button>
             </div>
 
         </div>

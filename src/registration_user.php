@@ -6,7 +6,7 @@ if (isset($_POST['registro'])) {
         session_start();
     }
 
-    $nombre = isset($_POST['nombre']) ? htmlspecialchars($_POST["nombre"], ENT_QUOTES, 'UTF-8'): false;
+    $nombre = isset($_POST['nombre']) ? htmlspecialchars($_POST["nombre"], ENT_QUOTES, 'UTF-8') : false;
     $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
     $email = isset($_POST['email']) ? trim($_POST['email']) : false;
     $password = isset($_POST['password']) ? $_POST['password'] : false;
@@ -16,7 +16,7 @@ if (isset($_POST['registro'])) {
 
 
     //Validación
-    //nombre
+    //Nombre
     if (!empty($nombre) && is_string($nombre) && !preg_match("/[0-9]+/", $nombre)) {
         $nombre_valido = true;
 
@@ -60,19 +60,23 @@ if (isset($_POST['registro'])) {
 
     if (empty($errores)) {
         $guardar_usuario = true;
-        //echo "USUARIO VÁLIDO";
-        //Hay que cifrar la contraseña para meterla a la base de datos, porque meterla tal cual es ilegal ?¿
-        //password_hash permita cifrar contraseñas y cost  es el número de veces que cifra la contraseña
+
         $password_segura = password_hash($password, PASSWORD_BCRYPT, ["cost" => 4]);
         $fecha_actual = date("Y-m-d H:i:s"); #formato YYYY-MM-DD HH:mm:ss
-
-        //Para verificarla: var_dump(password_verify($password, $password_segura)); 
-        $preparada = $bd->prepare("insert into usuarios (nombre,apellidos,email,password,fecha) values (?,?,?,?,?)");
-        if ($preparada->execute(array($nombre, $apellidos, $email, $password_segura, $fecha_actual))) {
-            $_SESSION["completado"] = "El registro se ha completado con éxito";
-        } else {
-            $_SESSION["errores"]["general"] = "Fallo al guardar el usuario";
-
+        //Alternativa a mysqli_error() con PDO
+        try {
+            $preparada = $bd->prepare("insert into usuarios (nombre,apellidos,email,password,fecha) values (?,?,?,?,?)");
+            if ($preparada->execute(array($nombre, $apellidos, $email, $password_segura, $fecha_actual))) {
+                $_SESSION["completado"] = "El registro se ha completado con éxito";
+            } else {
+                $_SESSION["errores"]["general"] = "Fallo al guardar el usuario";
+            }
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) {
+                $_SESSION["errores"]["general"] = "El correo electrónico ya está registrado";
+            } else {
+                $_SESSION["errores"]["general"] = "Error al guardar el usuario: " . $e->getMessage();
+            }
         }
 
     } else {
