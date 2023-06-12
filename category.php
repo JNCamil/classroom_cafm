@@ -21,7 +21,7 @@
 
             <h3 class="mb-5">
                 <?= strtoupper($categoria_actual['nombre']) ?> <span class="badge bg-danger">
-                    ¡Últimas preguntas!
+                    ¡Posts!
                 </span></h3>
                 <?php if ($_GET['id'] != 5): ?>
                     <button type="button" class="btn btn-primary my-2"><a href="./test<?=$_GET['id']?>.php" class="text-decoration-none link-light"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> ¡Ponte a prueba! <span class="badge bg-warning"><?=($_GET['id'] == 6)? '¡Crear TEST!':'¡Hacer TEST!'?></span></button>
