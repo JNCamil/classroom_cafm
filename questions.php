@@ -10,7 +10,7 @@
         <div class="col-lg-8  p-5 mb-5">
 
 
-            <h3 class="mb-5">EN EL TERRENO DE JUEGO. NUESTRO BLOG <span class="badge bg-danger">¡Útlimas preguntas!</span></h3>
+            <h3 class="mb-5">EN EL TERRENO DE JUEGO. NUESTRO BLOG <span class="badge bg-danger">¡Posts!</span></h3>
 
             <?php $entradas = verEntradas($bd);
             if (!empty($entradas)):
