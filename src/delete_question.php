@@ -7,7 +7,6 @@ if(isset($_SESSION['usuario']['id']) && isset($_GET['id'])){
 
     $sql = "DELETE FROM entradas WHERE usuario_id=? AND id=?";
 
-    //Alternativa a mysqli_error() con PDO
     try {
         $preparada = $bd->prepare($sql);
         $preparada->execute(array($usuario_id, $entrada_id));
@@ -15,7 +14,6 @@ if(isset($_SESSION['usuario']['id']) && isset($_GET['id'])){
         echo "Error al eliminar: " . $e->getMessage();
     }
     
-    //die();
 }
 
 header("Location:../index.php");

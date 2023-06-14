@@ -5,7 +5,6 @@ if (isset($_POST['registro'])) {
     if (!isset($_SESSION)) {
         session_start();
     }
-
     $nombre = isset($_POST['nombre']) ? htmlspecialchars($_POST["nombre"], ENT_QUOTES, 'UTF-8') : false;
     $apellidos = isset($_POST['apellidos']) ? $_POST['apellidos'] : false;
     $email = isset($_POST['email']) ? trim($_POST['email']) : false;
@@ -13,8 +12,6 @@ if (isset($_POST['registro'])) {
 
     //Errores
     $errores = array();
-
-
     //Validación
     //Nombre
     if (!empty($nombre) && is_string($nombre) && !preg_match("/[0-9]+/", $nombre)) {
@@ -55,14 +52,11 @@ if (isset($_POST['registro'])) {
         $terminos_valido = false;
         $errores['terminos'] = "Debe aceptar los términos";
     }
-
     $guardar_usuario = false;
-
     if (empty($errores)) {
         $guardar_usuario = true;
-
         $password_segura = password_hash($password, PASSWORD_BCRYPT, ["cost" => 4]);
-        $fecha_actual = date("Y-m-d H:i:s"); #formato YYYY-MM-DD HH:mm:ss
+        $fecha_actual = date("Y-m-d H:i:s"); 
         //Alternativa a mysqli_error() con PDO
         try {
             $preparada = $bd->prepare("insert into usuarios (nombre,apellidos,email,password,fecha) values (?,?,?,?,?)");
@@ -81,8 +75,6 @@ if (isset($_POST['registro'])) {
 
     } else {
         $_SESSION["errores"] = $errores;
-
-
     }
     header("Location:../registration.php");
     // if(count($errores)==0){

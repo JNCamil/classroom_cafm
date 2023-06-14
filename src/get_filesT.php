@@ -23,33 +23,6 @@ echo '<button type="button" class="btn btn-danger btn-lg my-3" onclick="empezarC
 echo '</form>';
 echo '</div>';
 echo '</div>';
-
-
-// foreach ($filas as $fila) {
-//     $type = $fila['type'];
-    
-//     if (preg_match('/^Regla\d+$/', $type)) {
-//         echo '<button type="button" class="text-start mb-3 px-5  btn btn-outline-danger btn-lg" onclick="showPdfTest(\'' . $type . '.pdf\')" /><i class="fa-solid fa-folder"></i> '. $type.'</button>';
-//     }
-//   }
-  
 /*
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (isset($_POST["opciones"])) {
-    $opcionesSeleccionadas = $_POST["opciones"];
-
-    // Procesar las opciones seleccionadas
-    foreach ($opcionesSeleccionadas as $opcion) {
-      // Realizar acciones con cada opción seleccionada
-      echo "Opción seleccionada: " . $opcion . "<br>";
-    }
-  } else {
-    echo "No se seleccionaron opciones.";
-  }
-}
-?>
-*/
-
-
+se generaron los checkboxes utilizando un bucle foreach y se asignó un identificador único a cada checkbox utilizando la función uniqid para evitar conflictos*/
 ?>
