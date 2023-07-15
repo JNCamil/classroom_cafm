@@ -1,5 +1,10 @@
 <?php require_once("./includes/redirect.php") ?>
 <?php require_once("./includes/head.php") ?>
+<?php $categoria_actual = verCategoria($bd, $_GET['id']);
+            if (!isset($categoria_actual["id"]) || $categoria_actual["id"] < 1 || $categoria_actual["id"] > 6) {
+                header("Location:index.php");
+            }
+?>
 <?php require_once("./includes/nav.php") ?>
 
 
@@ -13,11 +18,7 @@
     <div class="row  vh-100 ">
 
         <div class="col-lg-8  p-5">
-            <?php $categoria_actual = verCategoria($bd, $_GET['id']);
-            if (!isset($categoria_actual["id"])) {
-                header("Location:index.php");
-            }
-            ?>
+            
 
             <h3 class="mb-5">
                 <?= strtoupper($categoria_actual['nombre']) ?> <span class="badge bg-danger">

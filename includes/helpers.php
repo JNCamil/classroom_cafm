@@ -55,6 +55,14 @@ function verCategorias($bd)
 
 function verCategoria($bd, $id)
 {
+       // Validar el parámetro $id como un entero
+       $id = filter_var($id, FILTER_VALIDATE_INT);
+
+       if ($id === false) {
+           // Manejar el caso en que $id no sea un entero válido
+           return null; // O puedes lanzar una excepción, mostrar un error, etc.
+           
+       }
     $preparada = $bd->prepare("select * from categorias where id=?");
     $preparada->execute(array($id));
     $num_registros = $preparada->rowCount();
