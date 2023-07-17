@@ -15,24 +15,50 @@ window.onload = function () {
     }
 };
 function showPdfTest(fileName) {
+    var preguntaElement = document.getElementById("pregunta");
+    preguntaElement.textContent = ""; // Vaciar el contenido de texto
+    // Eliminar la clase de estilos que se aplicó previamente
+    preguntaElement.removeAttribute("class");
+    document.getElementById("respuestas").innerHTML = "";
+    document.getElementById("ultima").innerHTML = "";
+    document.getElementById("puntos").innerHTML = "";
+    document.getElementById("fin").innerHTML = "";
 
     var pdfContent = '<div class="card border-0 bg-transparent"><div class="card-body "><button class="btn btn-danger btn-lg mb-3 " type="button" onclick="showPDF(\'' + fileName + '\')"><i class="fa-solid fa-file-pdf fa-lg"></i> ' + fileName + ' </button><br>' +
         '<button id="HacerTest" class="btn btn-danger btn-lg mb-3 " type="button" onclick="empezar(\'' + fileName + '\')"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Hacer Test</button> </div></div>';
 
     var contenedor = document.getElementById("contenedor2");
     contenedor.innerHTML = pdfContent;
+
+
+
 }
 
+// function showFiles() {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             document.getElementById("lista").innerHTML = this.responseText;
+//         }
+//     };
+//     xhttp.open("POST", "./src/get_files.php", true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send();
+// }
 function showFiles() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("lista").innerHTML = this.responseText;
+    fetch("./src/get_files.php", {
+        method: 'POST',
+        body: "",
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded"
         }
-    };
-    xhttp.open("POST", "./src/get_files.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send();
+    })
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+        .then(res => res.text())
+        .then(res => {
+            document.getElementById("lista").innerHTML = res;
+        })
+        .catch(error => console.error(error));
 }
 
 
@@ -41,6 +67,7 @@ function showPDF(archivo) {
     window.open(pdfPath, '_blank');
 
 }
+
 var preguntas = [];
 var elegida = '';
 var correcta = '';
@@ -48,7 +75,34 @@ var contador = 0;
 var correctas = 0;
 var opciones = [2, 3, 4, 5];
 
+// function empezar(regla) {
+//     document.getElementById("puntos").innerHTML = "";
+//     document.getElementById("ultima").innerHTML = "";
+//     document.getElementById("fin").innerHTML = "";
+//     preguntas = [];
+//     contador = 0;
+//     correctas = 0;
+//     elegida = '';
+//     let sections = document.getElementsByTagName("section");
+//     for (let i = 0; i < sections.length; i++) {
+//         sections[i].innerHTML = '';
+//     }
+//     document.getElementById("HacerTest").style.display = "none";
+
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             preguntas = JSON.parse(this.responseText);
+
+//             cargarPregunta();
+//         }
+//     };
+//     xhttp.open("POST", "./src/reglasTest.php", true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send("regla=" + encodeURIComponent(regla));
+// }
 function empezar(regla) {
+
     document.getElementById("puntos").innerHTML = "";
     document.getElementById("ultima").innerHTML = "";
     document.getElementById("fin").innerHTML = "";
@@ -61,18 +115,21 @@ function empezar(regla) {
         sections[i].innerHTML = '';
     }
     document.getElementById("HacerTest").style.display = "none";
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            preguntas = JSON.parse(this.responseText);
+    fetch("./src/reglasTest.php", {
+        method: 'POST',
+        body: "regla=" + encodeURIComponent(regla),
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+        }
+    })
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+        .then(res => res.text())
+        .then(res => {
+            preguntas = JSON.parse(res);
 
             cargarPregunta();
-        }
-    };
-    xhttp.open("POST", "./src/reglasTest.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("regla=" + encodeURIComponent(regla));
+        })
+        .catch(error => console.error(error));
 }
 
 function reordenarOpciones() {
@@ -160,8 +217,7 @@ function responder() {
 }
 
 function finalizar() {
-    // VER CÓmo hacer test de nuevo?¿?¿
-    // document.getElementById("HacerTest").innerHTML = '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Hacer Test de Nuevo';
+    //Hacer nuevo TEST : rename buttom 
 
     document.getElementById("respondertest").style.display = "none";
 
@@ -179,17 +235,34 @@ function finalizar() {
 }
 
 /********************************************** -- NORMATIVA -- ***************************************** */
+// function showFilesN() {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             document.getElementById("listaN").innerHTML = this.responseText;
+//         }
+//     };
+//     xhttp.open("POST", "./src/get_filesN.php", true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send();
+// }
 function showFilesN() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("listaN").innerHTML = this.responseText;
+    fetch("./src/get_filesN.php", {
+        method: 'POST',
+        body: "",
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded"
         }
-    };
-    xhttp.open("POST", "./src/get_filesN.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send();
+    })
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+        .then(res => res.text())
+        .then(res => {
+            document.getElementById("listaN").innerHTML = res;
+        })
+        .catch(error => console.error(error));
 }
+
+
 function showPdfTestN(fileName) {
 
     var pdfContent = '<div class="card border-0 bg-transparent"><div class="card-body "><button class="btn btn-danger btn-lg mb-3 " type="button" onclick="showPDFN(\'' + fileName + '\')"><i class="fa-solid fa-file-pdf fa-lg"></i> ' + fileName + ' </button><br>' +
@@ -209,16 +282,31 @@ function showPDFN(archivo) {
 
 }
 /********************************************** -- ACTAS -- ***************************************** */
+// function showFilesA() {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             document.getElementById("listaA").innerHTML = this.responseText;
+//         }
+//     };
+//     xhttp.open("POST", "./src/get_filesA.php", true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send();
+// }
 function showFilesA() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("listaA").innerHTML = this.responseText;
+    fetch("./src/get_filesA.php", {
+        method: 'POST',
+        body: "",
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded"
         }
-    };
-    xhttp.open("POST", "./src/get_filesA.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send();
+    })
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+        .then(res => res.text())
+        .then(res => {
+            document.getElementById("listaA").innerHTML = res;
+        })
+        .catch(error => console.error(error));
 }
 function showPdfTestA(fileName) {
 
@@ -257,16 +345,31 @@ function abrirVideo(cod) {
 
 }
 /*********************** --CREAR TEST-- ***********************/
+// function showFilesT() {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200) {
+//             document.getElementById("lista").innerHTML = this.responseText;
+//         }
+//     };
+//     xhttp.open("POST", "./src/get_filesT.php", true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send();
+// }
 function showFilesT() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("lista").innerHTML = this.responseText;
+    fetch("./src/get_filesT.php", {
+        method: 'POST',
+        body: "",
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded"
         }
-    };
-    xhttp.open("POST", "./src/get_filesT.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send();
+    })
+        .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
+        .then(res => res.text())
+        .then(res => {
+            document.getElementById("lista").innerHTML = res;
+        })
+        .catch(error => console.error(error));
 }
 
 function empezarCrear() {

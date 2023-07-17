@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <h6  id="pregunta"></h6>
+                <div id="pregunta"></div>
                 <div id="respuestas"></div>
                 <div id="ultima"></div>
                 <div class="d-flex justify-content-center" id="puntos"></div>
