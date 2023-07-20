@@ -5,7 +5,7 @@
 
 <div class="container-fluid px-4 vh-100" id="contenedor">
 
-        <!-- Anterior, para bajar la fila hasta abajo: <div class="row vh-100 ">-->
+        
         <div class="row ">
 
             <div class="col-lg-3  p-4 mt-4 text-center  ">

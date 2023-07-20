@@ -7,9 +7,9 @@
                 <div class="col-12 mb-5">
                     <img src="./public/img/logo_ident_login.png" class="img-fluid" id="img_login" alt="Cargando logo">
                 </div>
-                <div class="col-12 my-5">
-                    <!-- Espaciador -->
-                </div>
+               <!-- <div class="col-12 my-5">
+                    ESPACIADOR
+                </div>-->
                 <div class="col-12 my-4">
                     <!-- Espaciador -->
                 </div>

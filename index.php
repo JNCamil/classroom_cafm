@@ -30,7 +30,7 @@
                                 <?php echo substr($entrada["descripcion"], 0, 100) . "..." ?>
                             </p>
                             </a>
-                            <!--Ajusta la cadena para que sólo aparezcan 100 caracteres, en caso de ser una entrada grande-->
+                            
                         </div>
                     </div>
                 <?php endforeach;

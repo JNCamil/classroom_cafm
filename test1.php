@@ -4,7 +4,7 @@
 
 <div class="container-fluid px-4 " id="contenedor">
 
-    <!-- Anterior, para bajar la fila hasta abajo: <div class="row vh-100 ">-->
+   
     <div class="row vh-100">
 
         <div class="col-lg-3  p-4 mt-4 text-center  ">
@@ -27,7 +27,6 @@
             </div>
             <div id="opcionesAnteriores">
                 <div id="pregunta"></div>
-                <h6 ></h6>
                 <div id="respuestas"></div>
                 <div id="ultima"></div>
                 <div class="d-flex justify-content-center" id="puntos"></div>

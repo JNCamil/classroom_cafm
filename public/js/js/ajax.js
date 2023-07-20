@@ -149,7 +149,7 @@ function reordenarOpciones() {
 
 function cargarPregunta() {
     let datos = preguntas[contador];
-    correcta = datos['success'];
+    correcta = datos['gI$3d%f*f17U'];
     elegida = '';
     if (datos['type'] == 'FJ' || datos['type'] == 'TLD-TLI' || datos['type'] == 'TP') {
         document.getElementById("pregunta").setAttribute("class", "text-white   p-3 rounded bg-danger");
