@@ -324,7 +324,14 @@ function showPDFA(archivo) {
 }
 /************************************************* -- Vídeos-- *************************************************** */
 function showTestVid(fileName) {
-
+    var preguntaElement = document.getElementById("pregunta");
+    preguntaElement.textContent = ""; // Vaciar el contenido de texto
+    // Eliminar la clase de estilos que se aplicó previamente
+    preguntaElement.removeAttribute("class");
+    document.getElementById("respuestas").innerHTML = "";
+    document.getElementById("ultima").innerHTML = "";
+    document.getElementById("puntos").innerHTML = "";
+    document.getElementById("fin").innerHTML = "";
     var pdfContent = '<button id="HacerTest" class="btn btn-danger btn-lg mb-3 " type="button" onclick="empezar(\'' + fileName + '\')"><span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Hacer Test</button> </div></div>';
 
     var contenedor = document.getElementById("contenedor2");
